@@ -25,3 +25,13 @@ export type UserRegisterType = {
   password: string;
   phone: string;
 };
+
+export type ExperienceType = {
+  _id: string;
+  timeFrame: string;
+  role: string;
+  company: string;
+  location: string;
+  createdAt: string;
+  updatedAt: string;
+};
