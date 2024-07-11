@@ -35,7 +35,7 @@ const AddExperienceForm = ({ item }: ExperienceTypeProps) => {
           duration: 2000,
         });
         reset();
-        navigate('/add-experience');
+        navigate('/all-experience');
       }
     } catch (error) {
       toast.error('Something went wrong!', { id: toastId, duration: 2000 });
