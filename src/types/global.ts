@@ -59,3 +59,13 @@ export type ProjectType = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type BlogType = {
+  _id: string;
+  title: string;
+  content: string;
+  author: string;
+  coverImage: string;
+  createdAt: string;
+  updatedAt: string;
+};
