@@ -3,6 +3,7 @@ import App from '../App';
 import ProtectedRoute from '../layouts/ProtectedRoute';
 import Login from '../pages/Login';
 import { protectedPaths } from './protectedPaths';
+import { routesName } from './routesName';
 
 const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ const router = createBrowserRouter([
     children: protectedPaths,
   },
   {
-    path: '/login',
+    path: routesName.LOGIN,
     element: <Login />,
   },
 ]);

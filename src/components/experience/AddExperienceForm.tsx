@@ -1,30 +1,23 @@
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form';
+import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { useAddExperienceMutation } from '../../redux/features/experience/experienceApi';
-import { ExperienceType } from '../../types';
-import InputField from '../form/InputField';
+import { routesName } from '../../routes/routesName';
+import MKForm from '../form/MKForm';
+import MKInputField from '../form/MKInputField';
 
-interface ExperienceTypeProps {
-  item?: ExperienceType;
-}
+const defaultValues = {
+  timeFrame: '',
+  role: '',
+  company: '',
+  location: '',
+};
 
-const AddExperienceForm = ({ item }: ExperienceTypeProps) => {
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: item
-      ? {
-          timeFrame: item.timeFrame,
-          role: item.role,
-          company: item.company,
-          location: item.location,
-        }
-      : undefined,
-  });
+const AddExperienceForm = () => {
   const [addExperience] = useAddExperienceMutation();
   const navigate = useNavigate();
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log('Data ', data);
+  const handleSubmit = async (data: FieldValues) => {
     const toastId = toast.loading('Creation in progress...');
 
     try {
@@ -34,8 +27,7 @@ const AddExperienceForm = ({ item }: ExperienceTypeProps) => {
           id: toastId,
           duration: 2000,
         });
-        reset();
-        navigate('/all-experience');
+        navigate(`/${routesName.ALL_EXPERIENCE}`);
       }
     } catch (error) {
       toast.error('Something went wrong!', { id: toastId, duration: 2000 });
@@ -43,44 +35,48 @@ const AddExperienceForm = ({ item }: ExperienceTypeProps) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)} className="text-center w-1/3">
+    <div className="text-center w-1/3">
+      <MKForm
+        onSubmit={handleSubmit}
+        defaultValues={defaultValues}
+        resetOnSubmit
+      >
         <div className="flex flex-col gap-5 mb-5">
-          <InputField
-            label="company"
+          <MKInputField
+            name="company"
+            label="Company"
             type="text"
-            register={register}
-            placeholder="Company"
+            placeholder="Enter your company name"
             required={true}
           />
 
-          <InputField
-            label="role"
+          <MKInputField
+            name="role"
+            label="Role"
             type="text"
-            register={register}
-            placeholder="Role"
+            placeholder="Enter your role"
             required={true}
           />
-          <InputField
-            label="timeFrame"
+          <MKInputField
+            name="timeFrame"
+            label="Time Frame"
             type="text"
-            register={register}
-            placeholder="Time Frame"
+            placeholder="Enter your time frame"
             required={true}
           />
-          <InputField
-            label="location"
+          <MKInputField
+            name="location"
+            label="Location"
             type="text"
-            register={register}
-            placeholder="Location"
+            placeholder="Enter company location"
             required={true}
           />
         </div>
         <button type="submit" className="btn btn-sm btn-primary">
-          {item ? 'Update Experience' : 'Add Experience'}
+          Add Experience
         </button>
-      </form>
-    </>
+      </MKForm>
+    </div>
   );
 };
 

@@ -35,3 +35,11 @@ export type ExperienceType = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type SkillType = {
+  _id: string;
+  skill: string;
+  icon: string;
+  createdAt: string;
+  updatedAt: string;
+};
