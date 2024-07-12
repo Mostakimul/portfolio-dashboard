@@ -5,5 +5,7 @@ export const routesName = {
   ALL_SKILL: 'all-skill',
   ADD_PROJECT: 'add-project',
   ALL_PROJECT: 'all-project',
+  ADD_BLOG: 'add-blog',
+  ALL_BLOG: 'all-blog',
   LOGIN: 'login',
 };

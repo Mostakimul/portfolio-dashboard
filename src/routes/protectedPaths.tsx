@@ -1,3 +1,5 @@
+import AddBlog from '../pages/blog/AddBlog';
+import AllBlogs from '../pages/blog/AllBlogs';
 import Dashboard from '../pages/Dashboard';
 import AddExperience from '../pages/experience/AddExperience';
 import AllExperience from '../pages/experience/AllExperience';
@@ -55,6 +57,21 @@ export const protectedPaths = [
         name: 'All Project',
         path: routesName.ALL_PROJECT,
         element: <AllProject />,
+      },
+    ],
+  },
+  {
+    name: 'Blog Management',
+    children: [
+      {
+        name: 'Add blog',
+        path: routesName.ADD_BLOG,
+        element: <AddBlog />,
+      },
+      {
+        name: 'All Blogs',
+        path: routesName.ALL_BLOG,
+        element: <AllBlogs />,
       },
     ],
   },
