@@ -43,3 +43,19 @@ export type SkillType = {
   createdAt: string;
   updatedAt: string;
 };
+
+export type BadgeType = {
+  _id: string;
+  title: string;
+  link: string;
+};
+
+export type ProjectType = {
+  _id: string;
+  title: string;
+  description: string;
+  imageSrc: string;
+  badges: BadgeType[];
+  createdAt: string;
+  updatedAt: string;
+};

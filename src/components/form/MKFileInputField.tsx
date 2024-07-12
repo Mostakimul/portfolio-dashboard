@@ -21,7 +21,7 @@ const MKFileInputField = ({ name, label }: TProps) => {
                 type={name}
                 value={value?.fileName}
                 onChange={(e) => onChange(e.target.files?.[0])}
-                className="w-full max-w-xs"
+                className="w-full max-w-xs placeholder:italic placeholder:text-slate-600"
               />
             </label>
           </div>

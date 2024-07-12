@@ -32,7 +32,7 @@ const MKInputField: React.FC<TInputFieldProps> = ({
               {...field}
               type={type}
               placeholder={placeholder}
-              className="w-full max-w-xs"
+              className="w-full max-w-xs placeholder:italic placeholder:text-slate-600"
               required={required}
               disabled={disabled}
             />
