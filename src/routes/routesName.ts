@@ -10,5 +10,6 @@ export const routesName = {
   EDIT_PROJECT: '/edit-project',
   ADD_BLOG: 'add-blog',
   ALL_BLOG: 'all-blog',
+  EDIT_BLOG: '/edit-blog',
   LOGIN: 'login',
 };

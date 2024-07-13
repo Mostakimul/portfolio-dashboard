@@ -88,6 +88,11 @@ export const protectedPaths = [
         path: routesName.ALL_BLOG,
         element: <AllBlogs />,
       },
+      {
+        name: 'Edit Blog',
+        path: `${routesName.EDIT_BLOG}/:id`,
+        element: <AddBlog />,
+      },
     ],
   },
 ];

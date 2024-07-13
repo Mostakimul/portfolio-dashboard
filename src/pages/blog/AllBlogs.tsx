@@ -2,6 +2,7 @@ import BlogTableRow from '../../components/blog/BlogTableRow';
 import Error from '../../components/common/Error';
 import { useGetAllBlogQuery } from '../../redux/features/blog/blogApi';
 import { BlogType } from '../../types';
+import { ALERTS } from '../../utils/alerts';
 
 const AllBlogs = () => {
   const { data, isLoading, isError } = useGetAllBlogQuery(undefined);
@@ -12,7 +13,7 @@ const AllBlogs = () => {
   } else if (!isLoading && isError) {
     content = (
       <tr>
-        <Error message="Error fetching data!" />
+        <Error message={ALERTS.ERROR_FETCH} />
       </tr>
     );
   } else if (!isLoading && !isError && data?.data.length > 0) {
@@ -24,7 +25,7 @@ const AllBlogs = () => {
   return (
     <div className="flex flex-col w-full my-5 gap-5">
       <div className="grid h-20 card bg-base-200 rounded-box place-items-center ">
-        <h1 className="text-3xl font-bold">All Blogs</h1>
+        <h1 className="text-3xl font-bold">{ALERTS.PAGE_TITLE.ALL_BLOG}</h1>
       </div>
 
       <div className="grid card bg-base-200 rounded-box place-items-center p-5">
@@ -36,6 +37,7 @@ const AllBlogs = () => {
                 <th>Title</th>
                 <th>Content</th>
                 <th>Cover Image</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{content}</tbody>

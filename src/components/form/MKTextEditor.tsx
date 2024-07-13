@@ -43,6 +43,8 @@ const MKTextEditor: React.FC<TInputFieldProps> = ({ name }) => {
           modules={module}
           theme="snow"
           className="h-4/6"
+          value={field.value || ''}
+          onChange={field.onChange}
         />
       )}
     />
