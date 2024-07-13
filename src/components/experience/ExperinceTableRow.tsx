@@ -32,13 +32,13 @@ const ExperinceTableRow = ({ row }: ExperinceTableRowProps) => {
           to={`${routesName.EDIT_EXPERIENCE}/${row._id}`}
           className="btn btn-sm btn-outline btn-info"
         >
-          Edit
+          {ALERTS.BUTTON.EDIT}
         </Link>
         <button
           onClick={() => handleDelete()}
           className="btn btn-sm btn-outline btn-error"
         >
-          Delete
+          {ALERTS.BUTTON.DELETE}
         </button>
       </td>
     </tr>

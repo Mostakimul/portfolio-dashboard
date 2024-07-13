@@ -10,6 +10,11 @@ export const ALERTS = {
     DELETE: 'Delete',
     EDIT: 'Edit',
   },
+  PAGE_TITLE: {
+    ALL_EXPERIENCE: 'All Experience',
+    ADD_EXPERIENCE: 'Add New Experience',
+    EDIT_EXPEREIENCE: 'Edit experience',
+  },
   SOMETHING_WRONG: 'Something went wrong!',
   CREATION_PROGRESS: 'Creation in progress...',
   UPDATING_PROGRESS: 'Updating in progress...',
