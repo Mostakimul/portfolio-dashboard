@@ -2,6 +2,7 @@ import Error from '../../components/common/Error';
 import ProjectTableRow from '../../components/project/ProjectTableRow';
 import { useGetAllProjectsQuery } from '../../redux/features/project/projectApi';
 import { ProjectType } from '../../types';
+import { ALERTS } from '../../utils/alerts';
 
 const AllProject = () => {
   const { data, isLoading, isError } = useGetAllProjectsQuery(undefined);
@@ -12,7 +13,7 @@ const AllProject = () => {
   } else if (!isLoading && isError) {
     content = (
       <tr>
-        <Error message="Error fetching data!" />
+        <Error message={ALERTS.ERROR_FETCH} />
       </tr>
     );
   } else if (!isLoading && !isError && data?.data.length > 0) {
@@ -24,7 +25,7 @@ const AllProject = () => {
   return (
     <div className="flex flex-col w-full my-5 gap-5">
       <div className="grid h-20 card bg-base-200 rounded-box place-items-center ">
-        <h1 className="text-3xl font-bold">All Projects</h1>
+        <h1 className="text-3xl font-bold">{ALERTS.PAGE_TITLE.ALL_PROJECT}</h1>
       </div>
 
       <div className="grid card bg-base-200 rounded-box place-items-center p-5">
@@ -37,6 +38,7 @@ const AllProject = () => {
                 <th>Description</th>
                 <th>Badges</th>
                 <th>Cover photo</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{content}</tbody>

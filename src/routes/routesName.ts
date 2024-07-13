@@ -7,6 +7,7 @@ export const routesName = {
   EDIT_SKILL: '/edit-skill',
   ADD_PROJECT: 'add-project',
   ALL_PROJECT: 'all-project',
+  EDIT_PROJECT: '/edit-project',
   ADD_BLOG: 'add-blog',
   ALL_BLOG: 'all-blog',
   LOGIN: 'login',

@@ -68,6 +68,11 @@ export const protectedPaths = [
         path: routesName.ALL_PROJECT,
         element: <AllProject />,
       },
+      {
+        name: 'Edit Project',
+        path: `${routesName.EDIT_PROJECT}/:id`,
+        element: <AddProject />,
+      },
     ],
   },
   {
