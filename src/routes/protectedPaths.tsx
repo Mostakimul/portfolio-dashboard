@@ -48,6 +48,11 @@ export const protectedPaths = [
         path: routesName.ALL_SKILL,
         element: <AllSkill />,
       },
+      {
+        name: 'Edit Skill',
+        path: `${routesName.EDIT_SKILL}/:id`,
+        element: <AddSkill />,
+      },
     ],
   },
   {
