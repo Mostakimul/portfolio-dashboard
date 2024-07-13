@@ -38,7 +38,6 @@ const AddExperienceForm = ({ experience }: ExperienceProps) => {
           data,
           id: experience?._id,
         });
-        console.log(result);
         if (result.data.success) {
           toast.success(ALERTS.EXPERIENCE.UPDATE_EXPERIENCE, {
             id: toastId,

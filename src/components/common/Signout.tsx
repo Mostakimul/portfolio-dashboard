@@ -1,5 +1,6 @@
 import { logout } from '../../redux/features/auth/authSlice';
 import { useAppDispatch } from '../../redux/hooks';
+import { ALERTS } from '../../utils/alerts';
 
 const Signout = () => {
   const dispatch = useAppDispatch();
@@ -8,7 +9,7 @@ const Signout = () => {
       onClick={() => dispatch(logout())}
       className="btn btn-sm btn-outline btn-error"
     >
-      Logout
+      {ALERTS.LOGOUT}
     </button>
   );
 };

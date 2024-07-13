@@ -4,7 +4,10 @@ import { useGetSingleExperienceQuery } from '../../redux/features/experience/exp
 
 const AddExperience = () => {
   const { id } = useParams();
-  const { data } = useGetSingleExperienceQuery(id);
+  const { data } = useGetSingleExperienceQuery(id, {
+    skip: !id,
+  });
+
   return (
     <div className="flex flex-col w-full  my-5 gap-5">
       <div className="grid h-20 card bg-base-200 rounded-box place-items-center ">

@@ -13,4 +13,5 @@ export const ALERTS = {
   SOMETHING_WRONG: 'Something went wrong!',
   CREATION_PROGRESS: 'Creation in progress...',
   UPDATING_PROGRESS: 'Updating in progress...',
+  LOGOUT: 'Logout',
 };
