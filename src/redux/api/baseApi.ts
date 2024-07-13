@@ -84,6 +84,7 @@ export const baseApi = createApi({
     'experience',
     'works',
     'skills',
+    'skill',
     'projects',
     'project',
     'blogs',
