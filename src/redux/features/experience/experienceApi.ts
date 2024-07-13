@@ -30,8 +30,39 @@ const experienceApi = baseApi.injectEndpoints({
       },
       providesTags: ['experiences'],
     }),
+    getSingleExperience: builder.query({
+      query: (id) => ({
+        url: `/experiences/${id}`,
+        method: 'GET',
+      }),
+      providesTags: ['experience'],
+    }),
+    updateExperience: builder.mutation({
+      query: ({ data, id }) => {
+        return {
+          url: `/experiences/${id}`,
+          method: 'PUT',
+          body: data,
+        };
+      },
+      invalidatesTags: ['experiences', 'experience'],
+    }),
+    deleteExperience: builder.mutation({
+      query: (id) => {
+        return {
+          url: `/experiences/${id}`,
+          method: 'DELETE',
+        };
+      },
+      invalidatesTags: ['experiences'],
+    }),
   }),
 });
 
-export const { useAddExperienceMutation, useGetAllExperienceQuery } =
-  experienceApi;
+export const {
+  useAddExperienceMutation,
+  useGetAllExperienceQuery,
+  useGetSingleExperienceQuery,
+  useUpdateExperienceMutation,
+  useDeleteExperienceMutation,
+} = experienceApi;

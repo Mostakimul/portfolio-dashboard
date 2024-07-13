@@ -28,6 +28,11 @@ export const protectedPaths = [
         path: routesName.ALL_EXPERIENCE,
         element: <AllExperience />,
       },
+      {
+        name: 'Edit Experience',
+        path: `${routesName.EDIT_EXPERIENCE}/:id`,
+        element: <AddExperience />,
+      },
     ],
   },
   {

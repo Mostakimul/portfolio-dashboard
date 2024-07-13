@@ -1,36 +1,64 @@
 import { FieldValues } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import { useAddExperienceMutation } from '../../redux/features/experience/experienceApi';
+import {
+  useAddExperienceMutation,
+  useUpdateExperienceMutation,
+} from '../../redux/features/experience/experienceApi';
 import { routesName } from '../../routes/routesName';
+import { ExperienceType } from '../../types';
+import { ALERTS } from '../../utils/alerts';
 import MKForm from '../form/MKForm';
 import MKInputField from '../form/MKInputField';
 
-const defaultValues = {
-  timeFrame: '',
-  role: '',
-  company: '',
-  location: '',
+type ExperienceProps = {
+  experience?: ExperienceType;
 };
 
-const AddExperienceForm = () => {
+const AddExperienceForm = ({ experience }: ExperienceProps) => {
+  const defaultValues = experience
+    ? {
+        timeFrame: experience.timeFrame,
+        role: experience.role,
+        company: experience.company,
+        location: experience.location,
+      }
+    : undefined;
+
   const [addExperience] = useAddExperienceMutation();
+  const [updateExperience] = useUpdateExperienceMutation();
   const navigate = useNavigate();
 
   const handleSubmit = async (data: FieldValues) => {
-    const toastId = toast.loading('Creation in progress...');
-
+    let toastId;
     try {
-      const result = await addExperience(data);
-      if (result.data.success) {
-        toast.success('Experience added successfully', {
-          id: toastId,
-          duration: 2000,
+      toastId = toast.loading(ALERTS.UPDATING_PROGRESS);
+      if (experience) {
+        const result = await updateExperience({
+          data,
+          id: experience?._id,
         });
-        navigate(`/${routesName.ALL_EXPERIENCE}`);
+        console.log(result);
+        if (result.data.success) {
+          toast.success(ALERTS.EXPERIENCE.UPDATE_EXPERIENCE, {
+            id: toastId,
+            duration: 2000,
+          });
+          navigate(`/${routesName.ALL_EXPERIENCE}`);
+        }
+      } else {
+        toastId = toast.loading(ALERTS.CREATION_PROGRESS);
+        const result = await addExperience(data);
+        if (result.data.success) {
+          toast.success(ALERTS.EXPERIENCE.ADD_EXPERIENCE, {
+            id: toastId,
+            duration: 2000,
+          });
+          navigate(`/${routesName.ALL_EXPERIENCE}`);
+        }
       }
     } catch (error) {
-      toast.error('Something went wrong!', { id: toastId, duration: 2000 });
+      toast.error(ALERTS.SOMETHING_WRONG, { id: toastId, duration: 2000 });
     }
   };
 
@@ -73,7 +101,9 @@ const AddExperienceForm = () => {
           />
         </div>
         <button type="submit" className="btn btn-sm btn-primary">
-          Add Experience
+          {experience
+            ? ALERTS.BUTTON.UPDATE_EXPERIENCE
+            : ALERTS.BUTTON.ADD_EXPERIENCE}
         </button>
       </MKForm>
     </div>

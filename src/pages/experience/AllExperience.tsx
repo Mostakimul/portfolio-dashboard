@@ -40,6 +40,7 @@ const AllExperience = () => {
                 <th>Time Frame</th>
                 <th>Role</th>
                 <th>Location</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{content}</tbody>

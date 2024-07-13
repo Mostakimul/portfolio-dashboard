@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   FieldValues,
   FormProvider,
@@ -33,6 +34,12 @@ const MKForm = ({
   }
 
   const methods = useForm(formConfig);
+
+  useEffect(() => {
+    if (defaultValues) {
+      methods.reset(defaultValues);
+    }
+  }, [defaultValues, methods]);
 
   const submit: SubmitHandler<FieldValues> = (data) => {
     onSubmit(data);

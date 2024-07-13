@@ -1,6 +1,7 @@
 export const routesName = {
   ADD_EXPERIENCE: 'add-experience',
   ALL_EXPERIENCE: 'all-experience',
+  EDIT_EXPERIENCE: '/edit-experience',
   ADD_SKILL: 'add-skill',
   ALL_SKILL: 'all-skill',
   ADD_PROJECT: 'add-project',
